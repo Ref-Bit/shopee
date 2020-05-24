@@ -30,4 +30,15 @@ $(document).ready(function() {
       }
     }
   })
+
+  /* Special Price isotope Filter */
+  var $grid = $(".grid").isotope({
+    itemSelector: '.grid-item',
+    layoutMode: 'fitRows'
+  })
+
+  $(".button-group").on("click", "button", function(){
+    let filterVal = $(this).attr("data-filter")
+    $grid.isotope({filter: filterVal});
+  })
 });

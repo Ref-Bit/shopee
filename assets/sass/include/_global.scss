@@ -1,4 +1,12 @@
 /* Global Stlyes */
+::-webkit-scrollbar{
+  position: relative;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: $color-primary;
+  border-radius: 3px;
+}
 button, button:focus{
   outline: none !important;
   box-shadow: none !important;
