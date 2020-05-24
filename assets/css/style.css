@@ -1,9 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost&family=Raleway&family=Rubik&display=swap");
+/* Variables */
+/* Global Stlyes */
 button, button:focus {
   outline: none !important;
   box-shadow: none !important;
 }
 
+.transition-300 {
+  transition: 0.3s ease;
+}
+
+.transition-500 {
+  transition: 0.5s ease;
+}
+
+/* Typography */
 .font-jost {
   font-family: "Jost", cursive;
 }
@@ -30,6 +41,31 @@ button, button:focus {
 
 .font-20 {
   font-size: 20px;
+}
+
+/* Colors */
+.color-primary {
+  color: #003859;
+}
+
+.color-secondary {
+  color: #00a5c4;
+}
+
+.color-yellow {
+  color: #ffd289;
+}
+
+.bg-color-primary {
+  background: #003859;
+}
+
+.bg-color-secondary {
+  background: #00a5c4;
+}
+
+.bg-color-yellow {
+  background: #ffd289;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,11 @@
+/* Global Stlyes */
 button, button:focus{
   outline: none !important;
   box-shadow: none !important;
+}
+.transition-300{
+  transition: $transition-300;
+}
+.transition-500{
+  transition: $transition-500;
 }
