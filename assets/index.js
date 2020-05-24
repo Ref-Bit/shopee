@@ -31,6 +31,27 @@ $(document).ready(function() {
     }
   })
 
+  /* New Phones Carousel */
+  $("#new-phones .owl-carousel").owlCarousel({
+    nav: false,
+    dots: true,
+    loop: true,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayHoverPause: 3000,
+    responsive:{
+      0:{
+        items: 1
+      },
+      600:{
+        items: 3
+      },
+      1000:{
+        items: 5
+      }
+    }
+  })
+
   /* Special Price isotope Filter */
   var $grid = $(".grid").isotope({
     itemSelector: '.grid-item',
