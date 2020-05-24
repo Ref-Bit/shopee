@@ -17,3 +17,9 @@ button, button:focus{
 .transition-500{
   transition: $transition-500;
 }
+.shadow{
+  box-shadow: $shadow;
+}
+.shadow-xl{
+  box-shadow: $shadow-xl;
+}
