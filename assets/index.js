@@ -52,6 +52,24 @@ $(document).ready(function() {
     }
   })
 
+  /* Blog Carousel */
+  $("#blog .owl-carousel").owlCarousel({
+    nav: true,
+    dots: false,
+    loop: true,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayHoverPause: 3000,
+    responsive:{
+      0:{
+        items: 1
+      },
+      600:{
+        items: 3
+      }
+    }
+  })
+
   /* Special Price isotope Filter */
   var $grid = $(".grid").isotope({
     itemSelector: '.grid-item',
