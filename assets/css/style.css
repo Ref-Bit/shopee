@@ -68,4 +68,38 @@ button, button:focus {
   background: #ffd289;
 }
 
+/* Top Sale */
+#top-sale .owl-carousel .item .product a {
+  overflow: hidden;
+}
+#top-sale .owl-carousel .item .product img {
+  transition: transform 0.5s ease;
+}
+#top-sale .owl-carousel .item .product img:hover {
+  transform: scale(1.1);
+}
+#top-sale .owl-carousel .owl-nav button {
+  position: absolute;
+  top: 150px;
+  outline: none;
+}
+#top-sale .owl-prev {
+  left: 0;
+}
+#top-sale .owl-prev span {
+  font-size: 50px;
+  color: #003859;
+  margin-left: -4rem;
+  padding: 0 1rem;
+}
+#top-sale .owl-next {
+  right: 0;
+}
+#top-sale .owl-next span {
+  font-size: 50px;
+  color: #003859;
+  margin-right: -4rem;
+  padding: 0 1rem;
+}
+
 /*# sourceMappingURL=style.css.map */

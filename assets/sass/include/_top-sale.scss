@@ -1,0 +1,35 @@
+/* Top Sale */
+#top-sale{
+  .owl-carousel .item .product a{
+    overflow: hidden;
+  }
+  .owl-carousel .item .product img{
+    transition: transform 0.5s ease;
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+  .owl-carousel .owl-nav button{
+    position: absolute;
+    top: 150px;
+    outline: none;
+  }
+  .owl-prev{
+    left: 0;
+    span{
+      font-size: 50px;
+      color: $color-primary;
+      margin-left: -4rem;
+      padding: 0 1rem;
+    }
+  }
+  .owl-next{
+    right: 0;
+    span{
+      font-size: 50px;
+      color: $color-primary;
+      margin-right: -4rem;
+      padding: 0 1rem;
+    }
+  }
+}
