@@ -1,11 +1,16 @@
 <?php include 'partials/header.php' ?>
+<?php
+  $item_id = $_GET['id'] ?? 1;
+  foreach($product->getData() as $item):
+    if($item['item_id'] == $item_id):
+?> 
 
 <!-- Product -->
 <section id="product" class="py-3">
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <img src="assets/images/products/11.png" alt="Product11" class="img-fluid">
+        <img src="<?php echo $item['item_image'] ?? '../assets/images/products/1.png' ?>" alt="<?php echo $item['item_name'] ?? '' ?>" class="img-fluid">
         <div class="form-row pt-4 font-16 font-jost">
           <div class="col">
             <button type="submit" class="btn btn-danger form-control">Proceed to Buy</button>
@@ -16,8 +21,8 @@
         </div>
       </div>
       <div class="col-sm-6 py-5">
-        <h5 class="font-jost font-20">iPhone X</h5>
-        <small>by Apple</small>
+        <h5 class="font-jost font-20"><?php echo $item['item_name'] ?? '' ?></h5>
+        <small>by <?php echo $item['item_brand'] ?></small>
         <div class="d-flex">
           <div class="rating text-warning font-12">
             <span><i class="fas fa-star"></i></span>
@@ -36,7 +41,7 @@
           </tr>
           <tr class="font-14 font-raleway">
             <td>Deal Price:</td>
-            <td class="font-20 text-danger">$<span>650.00</span><small class="text-dark font-12">&nbsp;&nbsp;Inclusive of all taxes</small></td>
+            <td class="font-20 text-danger">$<span><?php echo $item['item_price'] ?? 0 ?></span><small class="text-dark font-12">&nbsp;&nbsp;Inclusive of all taxes</small></td>
           </tr>
           <tr class="font-14 font-raleway">
             <td>Saved:</td>
@@ -117,6 +122,8 @@
     </div>
   </div>
 </section>
+
+<?php endif; endforeach; ?>
 
 <?php
  include 'partials/topSale.php';

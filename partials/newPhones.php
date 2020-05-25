@@ -8,7 +8,7 @@
     <?php foreach($products as $item) { ?>
         <div class="item py-2 bg-light">
           <div class="product font-raleway">
-            <a href="#"><img src="<?php echo $item['item_image'] ?? "../assets/images/products/1.png" ?>" alt="Product1" class="img-fluid"></a>
+            <a href="<?php printf('%s?id=%s', 'product.php', $item['item_id'])?>"><img src="<?php echo $item['item_image'] ?? "../assets/images/products/1.png" ?>" alt="Product1" class="img-fluid"></a>
             <div class="text-center">
               <h6><?php echo $item['item_name'] ?? "" ?></h6>
               <div class="rating text-warning font-12">

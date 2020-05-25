@@ -1,5 +1,4 @@
 <?php
-
   include 'partials/header.php';
   
   include 'partials/headerBanner.php';
