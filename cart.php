@@ -5,13 +5,17 @@
     <h5 class="font-jost font-20">Shopping Cart</h5>
     <div class="row">
       <div class="col-sm-9">
+      <?php 
+        foreach($product->getData("cart") as $item):
+          $cart = $product->getItemByID($item['item_id']);
+          array_map(function($item){ ?>
         <div class="row border-top py-3 mt-3">
           <div class="col-sm-2">
-            <img src="assets/images/products/1.png" alt="Product1" class="img-fluid" height="120px">
+            <img src="<?php echo $item['item_image'] ?? '..assets/images/products/1.png' ?>" alt="Product1" class="img-fluid" height="120px">
           </div>
           <div class="col-sm-8">
-            <h5 class="font-jost font-20">Samsung Galaxy S6</h5>
-            <small>by Samsung</small>
+            <h5 class="font-jost font-20"><?php echo $item['item_name'] ?? '' ?></h5>
+            <small>by <?php echo $item['item_name'] ?? 'Brand' ?></small>
             <div class="d-flex">
               <div class="rating text-warning font-12">
                 <span><i class="fas fa-star"></i></span>
@@ -34,10 +38,11 @@
           </div>
           <div class="col-sm-2 text-right">
             <div class="font-20 text-danger font-jost">
-              $<span class="product-price">150.00</span>
+              $<span class="product-price"><?php echo $item['item_price'] ?? '' ?></span>
             </div>
           </div>
         </div>
+        <?php  },$cart); endforeach; ?>
       </div>
       <div class="col-sm-3">
         <div class="sub-total border text-center mt-2">
@@ -48,44 +53,6 @@
           </div>
         </div> 
       </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-9">
-        <div class="row border-top py-3 mt-3">
-          <div class="col-sm-2">
-            <img src="assets/images/products/3.png" alt="Product3" class="img-fluid" height="120px">
-          </div>
-          <div class="col-sm-8">
-            <h5 class="font-jost font-20">Readmi 7</h5>
-            <small>by Readmi</small>
-            <div class="d-flex">
-              <div class="rating text-warning font-12">
-                <span><i class="fas fa-star"></i></span>
-                <span><i class="fas fa-star"></i></span>
-                <span><i class="fas fa-star"></i></span>
-                <span><i class="fas fa-star"></i></span>
-                <span><i class="far fa-star"></i></span>
-              </div>
-              <a href="#"class="font-raleway px-2 font-14">20,430 ratings</a>
-            </div>
-            <div class="qty d-flex pt-2">
-              <div class="d-flex font-raleway">
-                <button class="qty-up border-primary border-bottom-0 border-left-0 border-right-0 bg-light" data-id="prod-2"><i class="fas fa-angle-up"></i></button>
-                <input type="text" class="qty-input border-left border-right border-top-0 border-bottom-0 px-2 w-100 bg-light text-center" disabled value="1" data-id="prod-2">
-                <button class="qty-down border-primary border-top-0 border-left-0 border-right-0 bg-light" data-id="prod-2"><i class="fas fa-angle-down"></i></button>
-              </div>
-              <button type="submit" class="btn font-jost text-danger px-3 border-right">Delete</button>
-              <button type="submit" class="btn font-jost text-primary">Save for later</button>
-            </div>
-          </div>
-          <div class="col-sm-2 text-right">
-            <div class="font-20 text-danger font-jost">
-              $<span class="product-price">200.00</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3"></div>
     </div>
   </div>
 </section>
