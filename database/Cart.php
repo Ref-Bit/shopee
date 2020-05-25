@@ -45,6 +45,16 @@ class Cart
     }
   }
 
+  public function deleteCartProduct($item_id = null, $table = 'cart')
+  {
+    if($item_id != null){
+      $result = $this->db->con->query("DELETE FROM {$table} WHERE item_id = {$item_id}");
+      if($result){
+        header("Location:".$_SERVER['PHP_SELF']);
+        return $result;
+      }
+    }
+  }
 
   public function getSum($arr)
   { 

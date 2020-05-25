@@ -1,4 +1,12 @@
 <?php include 'partials/header.php' ?>
+
+<?php 
+  if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if(isset($_POST['delete_cart_product'])){
+      $deletedProduct = $cart->deleteCartProduct($_POST['item_id']);
+    }
+  }
+?>
 <!-- Cart -->
 <section id="cart" class="py-3">
   <div class="container">
@@ -33,8 +41,11 @@
                 <input type="text" class="qty-input border-left border-right border-top-0 border-bottom-0 px-2 w-100 bg-light text-center" disabled value="1" data-id="prod-<?php echo $item['item_id']; ?>">
                 <button class="qty-down border-primary border-top-0 border-left-0 border-right-0 bg-light" data-id="prod-<?php echo $item['item_id']; ?>"><i class="fas fa-angle-down"></i></button>
               </div>
-              <button type="submit" class="btn font-jost text-danger px-3 border-right">Delete</button>
-              <button type="submit" class="btn font-jost text-primary">Save for later</button>
+              <form method="POST">
+                <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? 0?>">
+                <button type="submit" name="delete_cart_product" class="btn font-jost text-danger px-3 border-right">Delete</button>
+              </form>
+              <button type="submit" name="save_cart_product" class="btn font-jost text-primary">Save for later</button>
             </div>
           </div>
           <div class="col-sm-2 text-right">
