@@ -1,19 +1,17 @@
-<?php ob_start(); include 'partials/header.php' ?>
-
 <?php 
   if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    if(isset($_POST['delete_cart_product'])) $cart->deleteCartProduct($_POST['item_id']);
-    if(isset($_POST['wishlist_product'])) $cart->saveForLater($_POST['item_id']);
+    if(isset($_POST['delete_wishlist_product'])) $cart->deleteCartProduct($_POST['item_id'], 'wishlist');
+    if(isset($_POST['add_to_cart'])) $cart->saveForLater($_POST['item_id'], 'cart', 'wishlist');
   }
 ?>
 <!-- Cart -->
 <section id="cart" class="py-3">
   <div class="container">
-    <h5 class="font-rubik font-20">Shopping Cart</h5>
+    <h5 class="font-rubik font-20">Wishlist</h5>
     <div class="row">
       <div class="col-sm-9">
       <?php 
-        foreach($product->getData("cart") as $item):
+        foreach($product->getData("wishlist") as $item):
           $cart_item = $product->getItemByID($item['item_id']);
           $subTotal[] = array_map(function($item){ 
       ?>
@@ -35,18 +33,13 @@
               <a href="#"class="font-raleway px-2 font-14">20,430 ratings</a>
             </div>
             <div class="qty d-flex pt-2">
-              <div class="d-flex font-raleway">
-                <button class="qty-up border-primary border-bottom-0 border-left-0 border-right-0 bg-light" data-id="<?php echo $item['item_id'] ?? 0; ?>"><i class="fas fa-angle-up"></i></button>
-                <input type="text" class="qty-input border-left border-right border-top-0 border-bottom-0 px-2 w-100 bg-light text-center" disabled value="1" data-id="<?php echo $item['item_id'] ?? 0; ?>">
-                <button class="qty-down border-primary border-top-0 border-left-0 border-right-0 bg-light" data-id="<?php echo $item['item_id'] ?? 0; ?>"><i class="fas fa-angle-down"></i></button>
-              </div>
               <form method="POST">
                 <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? 0?>">
-                <button type="submit" name="delete_cart_product" class="btn font-jost text-danger px-3 border-right">Delete</button>
+                <button type="submit" name="delete_wishlist_product" class="btn font-jost text-danger pl-0 pr-3 border-right">Delete</button>
               </form>
               <form method="POST">
                 <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? 0?>">
-                <button type="submit" name="wishlist_product" class="btn font-jost text-primary">Save for later</button>
+                <button type="submit" name="add_to_cart" class="btn font-jost text-primary">Add to Cart</button>
               </form>
             </div>
           </div>
@@ -62,21 +55,7 @@
          endforeach;
         ?>
       </div>
-      <div class="col-sm-3">
-        <div class="sub-total border text-center mt-2">
-          <h6 class="font-raleway font-12 text-success py-3"><i class="mr-2 fas fa-check"></i>Your order is eligible for Free Delivery.</h6>
-          <div class="border-top py-4">
-            <h5 class="font-16 font-jost">Subtotal (<?php echo isset($subTotal) ? count($subTotal) : 0; ?> items):&nbsp;<span class="text-danger">$<span id="deal_price" class="text-danger"><?php echo isset($subTotal) ? $cart->getSum($subTotal) : 0; ?></span></span></h5>
-            <button type="submit" class="btn btn-warning mt-3">Proceed to Buy</button>
-          </div>
-        </div> 
-      </div>
     </div>
   </div>
 </section>
 
-<?php
-  include 'partials/wishlist.php';
-  include 'partials/newPhones.php';
-  include 'partials/footer.php';
-?>

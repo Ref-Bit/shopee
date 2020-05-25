@@ -24,7 +24,7 @@
       <p class="font-raleway font-12 text-black-50 m-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, repellat.</p>
       <div class="font-raleway font-14">
         <a href="#" class="px-3 border-right border-left text-dark">Login</a>
-        <a href="#" class="px-3 border-right text-dark">Wishlist (0)</a>
+        <a href="#" class="px-3 border-right text-dark">Wishlist (<?php echo count($product->getData("wishlist")) ?>)</a>
       </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-color-secondary">
@@ -53,7 +53,7 @@
         <form class="font-14 font-raleway">
           <a href="cart.php" class="py-2 rounded-pill bg-color-primary">
             <span class="font-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
-            <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product->getData("cart")) ?></span>
+            <span class="px-3 py-2 rounded-pill text-dark font-weight-bold bg-light"><?php echo count($product->getData("cart")) ?></span>
           </a>
         </form>
       </div>
