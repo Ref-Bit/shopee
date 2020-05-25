@@ -1,4 +1,4 @@
-<?php include 'partials/header.php' ?>
+<?php ob_start(); include 'partials/header.php' ?>
 
 <?php 
   if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -10,7 +10,7 @@
 <!-- Cart -->
 <section id="cart" class="py-3">
   <div class="container">
-    <h5 class="font-jost font-20">Shopping Cart</h5>
+    <h5 class="font-rubik font-20">Shopping Cart</h5>
     <div class="row">
       <div class="col-sm-9">
       <?php 

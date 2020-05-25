@@ -25,11 +25,6 @@ class Cart
     }
   }
 
-  
-  public function testFunc(){
-    print_r('HEY!!!!!!!!!!!!!!!!!!!');
-  }
-
   public function addToCart($item_id, $user_id)
   {
     if(isset($item_id) && isset($user_id)){
@@ -67,6 +62,15 @@ class Cart
     }
   }
 
+  public function getCartID($cartArray = null, $key = 'item_id')
+  {
+    if($cartArray != null){
+      $cart_id = array_map(function($value) use ($key){
+        return $value[$key];
+      }, $cartArray);
+      return $cart_id;
+    }
+  }
 
 
 }

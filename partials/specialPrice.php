@@ -21,7 +21,7 @@
       ?>
     </div>
     <div class="grid">
-      <?php array_map(function($item){ ?>
+      <?php array_map(function($item)use($cart, $product){ ?>
         <div class="grid-item <?php echo $item['item_brand'] ?? 'Brand'; ?> border">
           <div class="item py-2" style="width: 200px;">
             <div class="product font-raleway">
@@ -41,7 +41,12 @@
                 <form method="POST">
                   <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? "1" ?>">
                   <input type="hidden" name="user_id" value="1">
-                  <button type="submit" name="special_price_submit" class="btn btn-warning rounded-0 font-12 font-bold">Add to cart</button>
+                  <?= 
+                    in_array($item['item_id'], $cart->getCartID($product->getData('cart')) ?? [] )
+                      ? '<button type="submit" name="special_price_submit" class="btn btn-light rounded-0 font-12 font-weight-bold" disabled>In Cart <i class="fas fa-check"></i></button>'
+                    
+                      : '<button type="submit" name="special_price_submit" class="btn btn-warning rounded-0 font-12 font-weight-bold">Add to cart</button>'
+                  ?>
                 </form>
               </div>
             </div>
