@@ -84,24 +84,60 @@ $(document).ready(function() {
   /* QTY INC-DEC */
   let $qty_up = $(".qty-up")
   let $qty_down = $(".qty-down")
-
+  let $deal_price = $("#deal_price")
+  
   $qty_up.click(function(e){
     let $qty_input = $(`.qty-input[data-id='${$(this).data("id")}']`)
-
-    if($qty_input.val() >= 1 && $qty_input.val() <= 9){
-      $qty_input.val(function(i, oldVal){
-        return ++oldVal;
-      })
-    }
+    let $product_price = $(`.product_price[data-id='${$(this).data("id")}']`)
+    
+    $.ajax({
+      url: "ajax.php",
+      type: "POST",
+      data: {
+        item_id: $(this).data("id")
+      },
+      success: function(result){
+        let obj = JSON.parse(result);
+        let item_price = obj[0]['item_price'];
+        
+        if($qty_input.val() >= 1 && $qty_input.val() <= 9){
+          $qty_input.val(function(i, oldVal){
+            return ++oldVal;
+          })
+          $product_price.text(parseInt(item_price * $qty_input.val()).toFixed(2))
+  
+          let subtotal = parseInt($deal_price.text()) + parseInt(item_price)
+          $deal_price.text(subtotal.toFixed(2))
+        }
+      }
+    })
   });
 
   $qty_down.click(function(e){
     let $qty_input = $(`.qty-input[data-id='${$(this).data("id")}']`)
-    if($qty_input.val() > 1 && $qty_input.val() <= 10){
-      $qty_input.val(function(i, oldVal){
-        return --oldVal;
-      })
-    }
+    let $product_price = $(`.product_price[data-id='${$(this).data("id")}']`)
+
+    $.ajax({
+      url: "ajax.php",
+      type: "POST",
+      data: {
+        item_id: $(this).data("id")
+      },
+      success: function(result){
+        let obj = JSON.parse(result);
+        let item_price = obj[0]['item_price'];
+        
+        if($qty_input.val() > 1 && $qty_input.val() <= 10){
+          $qty_input.val(function(i, oldVal){
+            return --oldVal;
+          })
+          $product_price.text(parseInt(item_price * $qty_input.val()).toFixed(2))
+
+          let subtotal = parseInt($deal_price.text()) - parseInt(item_price)
+          $deal_price.text(subtotal.toFixed(2))
+        }
+      }
+    })
   });
 
 });

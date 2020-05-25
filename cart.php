@@ -37,9 +37,9 @@
             </div>
             <div class="qty d-flex pt-2">
               <div class="d-flex font-raleway">
-                <button class="qty-up border-primary border-bottom-0 border-left-0 border-right-0 bg-light" data-id="prod-<?php echo $item['item_id']; ?>"><i class="fas fa-angle-up"></i></button>
-                <input type="text" class="qty-input border-left border-right border-top-0 border-bottom-0 px-2 w-100 bg-light text-center" disabled value="1" data-id="prod-<?php echo $item['item_id']; ?>">
-                <button class="qty-down border-primary border-top-0 border-left-0 border-right-0 bg-light" data-id="prod-<?php echo $item['item_id']; ?>"><i class="fas fa-angle-down"></i></button>
+                <button class="qty-up border-primary border-bottom-0 border-left-0 border-right-0 bg-light" data-id="<?php echo $item['item_id'] ?? 0; ?>"><i class="fas fa-angle-up"></i></button>
+                <input type="text" class="qty-input border-left border-right border-top-0 border-bottom-0 px-2 w-100 bg-light text-center" disabled value="1" data-id="<?php echo $item['item_id'] ?? 0; ?>">
+                <button class="qty-down border-primary border-top-0 border-left-0 border-right-0 bg-light" data-id="<?php echo $item['item_id'] ?? 0; ?>"><i class="fas fa-angle-down"></i></button>
               </div>
               <form method="POST">
                 <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? 0?>">
@@ -50,7 +50,7 @@
           </div>
           <div class="col-sm-2 text-right">
             <div class="font-20 text-danger font-jost">
-              $<span class="product-price"><?php echo $item['item_price'] ?? '' ?></span>
+              $<span class="product_price" data-id="<?php echo $item['item_id'] ?? 0; ?>"><?php echo $item['item_price'] ?? '' ?></span>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
         <div class="sub-total border text-center mt-2">
           <h6 class="font-raleway font-12 text-success py-3"><i class="mr-2 fas fa-check"></i>Your order is eligible for Free Delivery.</h6>
           <div class="border-top py-4">
-            <h5 class="font-16 font-jost">Subtotal (<?php echo isset($subTotal) ? count($subTotal) : 0; ?> items):&nbsp;<span class="text-danger">$<span id="deal-price" class="text-danger"><?php echo isset($subTotal) ? $cart->getSum($subTotal) : 0; ?></span></span></h5>
+            <h5 class="font-16 font-jost">Subtotal (<?php echo isset($subTotal) ? count($subTotal) : 0; ?> items):&nbsp;<span class="text-danger">$<span id="deal_price" class="text-danger"><?php echo isset($subTotal) ? $cart->getSum($subTotal) : 0; ?></span></span></h5>
             <button type="submit" class="btn btn-warning mt-3">Proceed to Buy</button>
           </div>
         </div> 
