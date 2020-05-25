@@ -61,8 +61,8 @@
   <main id="main-site">
     <!-- Cart -->
     <section id="cart" class="py-3">
-      <div class="container-fluid w-75">
-        <h5 class="font-jsot font-20">Shopping Cart</h5>
+      <div class="container">
+        <h5 class="font-jost font-20">Shopping Cart</h5>
         <div class="row">
           <div class="col-sm-9">
             <div class="row border-top py-3 mt-3">
@@ -94,12 +94,20 @@
               </div>
               <div class="col-sm-2 text-right">
                 <div class="font-20 text-danger font-jost">
-                  $<span class="product-price">150</span>
+                  $<span class="product-price">150.00</span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-3"></div>
+          <div class="col-sm-3">
+            <div class="sub-total border text-center mt-2">
+              <h6 class="font-raleway font-12 text-success py-3"><i class="mr-2 fas fa-check"></i>Your order is eligible for Free Delivery.</h6>
+              <div class="border-top py-4">
+                <h5 class="font-16 font-jost">Subtotal (2 items):&nbsp;<span class="text-danger">$<span id="deal-price" class="text-danger">150.00</span></span></h5>
+                <button type="submit" class="btn btn-warning mt-3">Proceed to Buy</button>
+              </div>
+            </div> 
+          </div>
         </div>
         <div class="row">
           <div class="col-sm-9">
@@ -108,8 +116,8 @@
                 <img src="assets/images/products/3.png" alt="Product3" class="img-fluid" height="120px">
               </div>
               <div class="col-sm-8">
-                <h5 class="font-jost font-20">Samsung Galaxy S6</h5>
-                <small>by Samsung</small>
+                <h5 class="font-jost font-20">Readmi 7</h5>
+                <small>by Readmi</small>
                 <div class="d-flex">
                   <div class="rating text-warning font-12">
                     <span><i class="fas fa-star"></i></span>
@@ -132,7 +140,7 @@
               </div>
               <div class="col-sm-2 text-right">
                 <div class="font-20 text-danger font-jost">
-                  $<span class="product-price">150</span>
+                  $<span class="product-price">200.00</span>
                 </div>
               </div>
             </div>
@@ -145,7 +153,7 @@
     <!-- New Phones -->
     <section id="new-phones">
       <div class="container py-5">
-        <h4 class="font-rubik font-20">New Phones</h4>
+        <h4 class="font-jost font-20">New Phones</h4>
         <hr>
         <div class="owl-carousel owl-theme">
           <div class="item py-2 bg-light">
