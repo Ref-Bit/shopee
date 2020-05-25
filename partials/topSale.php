@@ -1,4 +1,7 @@
-<?php $products = $product->getData(); ?>
+<?php
+  $products = $product->getData();
+  shuffle($products);
+?>
 
 <!-- Top Sale -->
 <section id="top-sale">
