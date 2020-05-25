@@ -1,6 +1,9 @@
 <?php
-  $products = $product->getData();
   shuffle($products);
+
+  if($_SERVER['REQUEST_METHOD'] == "POST"){
+    if(isset($_POST['top_sale_submit'])) $cart->addToCart($_POST['item_id'], $_POST['user_id']);
+  }
 ?>
 
 <!-- Top Sale -->
@@ -25,7 +28,11 @@
               <div class="price py-2">
                 <span>$<?php echo $item['item_price'] ?? "0" ?></span>
               </div>
-              <button type="submit" class="btn btn-warning rounded-0 font-12 font-bold">Add to cart</button>
+              <form method="POST">
+                <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? "1" ?>">
+                <input type="hidden" name="user_id" value="1">
+                <button type="submit" name="top_sale_submit" class="btn btn-warning rounded-0 font-12 font-bold">Add to cart</button>
+              </form>
             </div>
           </div>
         </div>
