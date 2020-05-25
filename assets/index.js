@@ -84,9 +84,10 @@ $(document).ready(function() {
   /* QTY INC-DEC */
   let $qty_up = $(".qty-up")
   let $qty_down = $(".qty-down")
-  let $qty_input = $(".qty-input")
 
   $qty_up.click(function(e){
+    let $qty_input = $(`.qty-input[data-id='${$(this).data("id")}']`)
+
     if($qty_input.val() >= 1 && $qty_input.val() <= 9){
       $qty_input.val(function(i, oldVal){
         return ++oldVal;
@@ -95,6 +96,7 @@ $(document).ready(function() {
   });
 
   $qty_down.click(function(e){
+    let $qty_input = $(`.qty-input[data-id='${$(this).data("id")}']`)
     if($qty_input.val() > 1 && $qty_input.val() <= 10){
       $qty_input.val(function(i, oldVal){
         return --oldVal;
