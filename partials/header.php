@@ -50,10 +50,10 @@
             <a class="nav-link transition-500" href="#">Coming Soon</a>
           </li>
         </ul>
-        <form action="#" class="font-14 font-raleway">
-          <a href="#" class="py-2 rounded-pill bg-color-primary">
+        <form class="font-14 font-raleway">
+          <a href="cart.php" class="py-2 rounded-pill bg-color-primary">
             <span class="font-16 px-2 text-white"><i class="fas fa-shopping-cart"></i></span>
-            <span class="px-3 py-2 rounded-pill text-dark bg-light">0</span>
+            <span class="px-3 py-2 rounded-pill text-dark bg-light"><?php echo count($product->getData("cart")) ?></span>
           </a>
         </form>
       </div>

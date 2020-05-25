@@ -1,5 +1,9 @@
 <?php include 'partials/header.php' ?>
 <?php
+  if($_SERVER['REQUEST_METHOD'] == "POST"){
+    if(isset($_POST['prodcut_add_cart'])) $cart->addToCart($_POST['item_id'], $_POST['user_id']);
+  }
+
   $item_id = $_GET['id'] ?? 1;
   foreach($product->getData() as $item):
     if($item['item_id'] == $item_id):
@@ -16,7 +20,11 @@
             <button type="submit" class="btn btn-danger form-control">Proceed to Buy</button>
           </div>
           <div class="col">
-            <button type="submit" class="btn btn-warning form-control">Add to Cart</button>
+            <form method="POST">
+              <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? "1" ?>">
+              <input type="hidden" name="user_id" value="1">
+              <button type="submit" name="prodcut_add_cart" class="btn btn-warning form-control">Add to cart</button>
+            </form>
           </div>
         </div>
       </div>

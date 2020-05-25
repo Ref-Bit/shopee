@@ -38,4 +38,5 @@ class Product
       return $resultArr;
     }
   }
+
 }
