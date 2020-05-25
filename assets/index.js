@@ -80,4 +80,26 @@ $(document).ready(function() {
     let filterVal = $(this).attr("data-filter")
     $grid.isotope({filter: filterVal});
   })
+
+  /* QTY INC-DEC */
+  let $qty_up = $(".qty-up")
+  let $qty_down = $(".qty-down")
+  let $qty_input = $(".qty-input")
+
+  $qty_up.click(function(e){
+    if($qty_input.val() >= 1 && $qty_input.val() <= 9){
+      $qty_input.val(function(i, oldVal){
+        return ++oldVal;
+      })
+    }
+  });
+
+  $qty_down.click(function(e){
+    if($qty_input.val() > 1 && $qty_input.val() <= 10){
+      $qty_input.val(function(i, oldVal){
+        return --oldVal;
+      })
+    }
+  });
+
 });
