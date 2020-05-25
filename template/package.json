@@ -1,7 +1,7 @@
 {
   "name": "Shopee",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple e-commerce built with PHP, MySQLi and Vanilla Javascript.",
   "main": "index.js",
   "dependencies": {
     "sass": "^1.26.5"
