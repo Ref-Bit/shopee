@@ -1,7 +1,7 @@
 <?php include 'partials/header.php' ?>
 <?php
   if($_SERVER['REQUEST_METHOD'] == "POST"){
-    if(isset($_POST['prodcut_add_cart'])) $cart->addToCart($_POST['item_id'], $_POST['user_id']);
+    if(isset($_POST['product_add_cart'])) $cart->addToCart($_POST['item_id'], $_POST['user_id']);
   }
 
   $item_id = $_GET['id'] ?? 1;
@@ -20,11 +20,12 @@
             <button type="submit" class="btn btn-danger form-control">Proceed to Buy</button>
           </div>
           <div class="col">
-            <form method="POST">
-              <input type="hidden" name="item_id" value="<?php echo $item['item_id'] ?? "1" ?>">
-              <input type="hidden" name="user_id" value="1">
-              <button type="submit" name="prodcut_add_cart" class="btn btn-warning form-control">Add to cart</button>
-            </form>
+            <?= 
+              in_array($item_id, $cart->getCartID($product->getData('cart')) ?? [])
+                ? '<button type="submit" name="product_add_cart" class="btn btn-light font-weight-bold form-control" disabled>In Cart <i class="fas fa-check"></i></button>'
+                
+                : '<button type="submit" name="product_add_cart" class="btn btn-warning font-weight-bold form-control">Add to cart</button>'
+            ?>
           </div>
         </div>
       </div>
@@ -99,9 +100,9 @@
             <div class="qty d-flex">
               <h6  class="font-jost">Qty:</h6>
               <div class="px-4 d-flex font-raleway">
-                <button class="qty-up border-primary border-bottom-0 border-left-0 border-right-0 bg-light" data-id="prod-3"><i class="fas fa-angle-up"></i></button>
-                <input type="text" class="qty-input border-left border-right border-top-0 border-bottom-0 px-2 w-50 bg-light text-center" disabled value="1" data-id="prod-3">
-                <button class="qty-down border-primary border-top-0 border-left-0 border-right-0 bg-light" data-id="prod-3"><i class="fas fa-angle-down"></i></button>
+                <button class="qty-up border-primary border-bottom-0 border-left-0 border-right-0 bg-light" data-id="<?php echo $item_id ?? 1 ?>"><i class="fas fa-angle-up"></i></button>
+                <input type="text" class="qty-input border-left border-right border-top-0 border-bottom-0 px-2 w-50 bg-light text-center" disabled value="1" data-id="<?php echo $item_id ?? 1 ?>">
+                <button class="qty-down border-primary border-top-0 border-left-0 border-right-0 bg-light" data-id="<?php echo $item_id ?? 1 ?>"><i class="fas fa-angle-down"></i></button>
               </div>
             </div>
           </div>
